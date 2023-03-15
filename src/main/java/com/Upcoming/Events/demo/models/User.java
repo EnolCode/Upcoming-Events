@@ -1,4 +1,4 @@
-package com.Upcoming.Events.demo.models;
+package com.upcoming.events.demo.models;
 
 import java.util.List;
 
@@ -17,6 +17,10 @@ public class User {
         this.username = username;
         this.password = password;
         this.authorities = authorities;
+    }
+
+    public User() {
+        
     }
 
     @ManyToMany(fetch = FetchType.EAGER)

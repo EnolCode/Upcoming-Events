@@ -1,10 +1,15 @@
-package com.Upcoming.Events.demo.services;
+package com.upcoming.events.demo.services;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
+<<<<<<< HEAD
 
 import com.Upcoming.Events.demo.models.Image;
 import com.Upcoming.Events.demo.repositories.ImageRepository;
+=======
+import com.upcoming.events.demo.models.Image;
+import com.upcoming.events.demo.repositories.ImageRepository;
+>>>>>>> origin/develop
 
 @Service
 public class ImageService {

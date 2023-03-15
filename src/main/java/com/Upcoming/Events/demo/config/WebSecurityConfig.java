@@ -1,4 +1,4 @@
-package com.Upcoming.Events.demo.config;
+package com.upcoming.events.demo.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

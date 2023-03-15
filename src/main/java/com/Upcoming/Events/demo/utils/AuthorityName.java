@@ -1,4 +1,4 @@
-package com.Upcoming.Events.demo.utils;
+package com.upcoming.events.demo.utils;
 
 public enum AuthorityName {
     READ, WRITE, ADMIN

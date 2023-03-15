@@ -9,7 +9,11 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+<<<<<<< HEAD
 import com.Upcoming.Events.demo.models.User;
+=======
+import com.upcoming.events.demo.models.User;
+>>>>>>> origin/develop
 
 import javax.persistence.EntityManager;
 

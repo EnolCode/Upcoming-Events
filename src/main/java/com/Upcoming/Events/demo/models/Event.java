@@ -1,4 +1,6 @@
-package com.Upcoming.Events.demo.models;
+package com.upcoming.events.demo.models;
+
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,7 +22,7 @@ public class Event {
     private String title;
 
     @Column (name = "date_hour")
-    private String date_hour;
+    private Date date_hour;
 
     @Column (name = "max_participants")
     private int max_participants;
@@ -37,7 +39,7 @@ public class Event {
     public Event() {
     }
 
-    public Event(String title, String date_hour, int max_participants, String description,
+    public Event(String title, Date date_hour, int max_participants, String description,
             int actual_participants) {
         this.title = title;
         this.date_hour = date_hour;
@@ -59,11 +61,11 @@ public class Event {
         this.title = title;
     }
 
-    public String getDate_hour() {
+    public Date getDate_hour() {
         return date_hour;
     }
 
-    public void setDate_hour(String date_hour) {
+    public void setDate_hour(Date date_hour) {
         this.date_hour = date_hour;
     }
 
