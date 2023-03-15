@@ -100,7 +100,7 @@ const onReset = () => {
             (val) => (val && val.length > 3) || 'This field is required',
           ]"
         />
-        <q-input
+        <!-- <q-input
           v-model="dateModel"
           label="Date/Time"
           label-color="white"
@@ -116,7 +116,26 @@ const onReset = () => {
           :rules="[
             (val) => (val && val.length > 3) || 'This field is required',
           ]"
+        /> -->
+
+        <q-input
+          v-model="dateModel"
+          label=""
+          label-color="white"
+          outlined
+          rounded
+          text-color="white"
+          color="white"
+          type="date"
+          :input-style="{ color: 'white', fontSize: '1.3em', marginBottom: '1.1em'}"
+          lazy-rules="ondemand"
+          bg-color="red"
+          class="q-mt-lg"
+          :rules="[
+            (val) => (val && val.length > 3) || 'This field is required',
+          ]"
         />
+
         <q-input
           v-model="capacityModel"
           label="Total Capacity"
