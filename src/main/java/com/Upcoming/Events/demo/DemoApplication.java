@@ -1,4 +1,4 @@
-package com.upcoming.events.demo;
+package com.Upcoming.Events.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.upcoming.events.demo.models;
+package com.Upcoming.Events.demo.models;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.upcoming.events.demo.utils.AuthorityName;
+import com.Upcoming.Events.demo.utils.AuthorityName;
 
 @Entity(name="authorities")
 public class Authority {

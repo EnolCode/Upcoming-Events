@@ -1,8 +1,8 @@
-package com.upcoming.events.demo.repositories;
+package com.Upcoming.Events.demo.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.upcoming.events.demo.models.Event;
+import com.Upcoming.Events.demo.models.Event;
 
 public interface EventRepository extends JpaRepository <Event, Long> {
     

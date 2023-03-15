@@ -1,4 +1,4 @@
-package com.upcoming.events.demo.controllers;
+package com.Upcoming.Events.demo.controllers;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,8 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.upcoming.events.demo.models.User;
-import com.upcoming.events.demo.services.UserServiceImpl;
+import com.Upcoming.Events.demo.models.User;
+import com.Upcoming.Events.demo.services.UserServiceImpl;
 
 @RestController
 @RequestMapping("/api/events")
