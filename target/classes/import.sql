@@ -4,7 +4,7 @@ INSERT INTO events( id, title, style, date_hour, max_participants, description, 
 INSERT INTO events( id, title, style, date_hour, max_participants, description, actual_participants) VALUES (default,'Las Ketchup', 'rock', '2023-01-12',  90,  'Asere Jeee',  80)
 INSERT INTO events( id, title, style, date_hour, max_participants, description, actual_participants) VALUES (default,'Las Ketchup', 'rock', '2023-01-12',  90,  'Asere Jeee',  80)
 INSERT INTO events( id, title, style, date_hour, max_participants, description, actual_participants) VALUES (default,'Las Ketchup', 'rock', '2023-01-12',  90,  'Asere Jeee',  80)
-INSERT INTO users( id, username, password) VALUES (default,'Raul', '$2a$10$GKWCiILI2MHMjemn2JapQuIyTxo/bA6pBgXUZZzNFMATKuVyApbJ2' ) 
+INSERT INTO users( id, username, password) VALUES (default,'Raul',          ) 
 INSERT INTO users( id, username, password) VALUES (default,'GobizConBambas', 'asas22' )
 INSERT INTO roles (id, name) VALUES (default,'ROLE_ADMIN')
 INSERT INTO roles (id, name) VALUES (default,'ROLE_USER')

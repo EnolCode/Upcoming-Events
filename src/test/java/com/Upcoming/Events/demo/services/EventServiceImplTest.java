@@ -2,9 +2,13 @@ package com.Upcoming.Events.demo.services;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -31,13 +35,15 @@ public class EventServiceImplTest {
 
     private List<Event> eventList;
 
-
+    Event event1 = new Event(1L,"Evento 1","22-06-1995",10,"description","style",1);
+    Event event2 = new Event(2L,"Evento 2","22-06-1995",10,"description","style",1);
+    Event event3 = new Event(3L,"Evento 3","22-06-1995",10,"description","style",1);
     @BeforeEach
     public void setUp() {
         eventList = new ArrayList<>();
-        eventList.add(new Event("Evento 1", "2023-03-15", 10, "Evento de prueba 1", 1,null));
-        eventList.add(new Event("Evento 2", "2023-03-20", 20, "Evento de prueba 2", 2,null));
-        eventList.add(new Event("Evento 3", "2023-03-25", 30, "Evento de prueba 3", 3, null));
+        eventList.add(event1);
+        eventList.add(event2);
+        eventList.add(event3);
     }
 
     @Test
@@ -53,33 +59,53 @@ public class EventServiceImplTest {
     }
 
     @Test
-    public void testFindAllPageable() {
-        Page<Event> eventPage = new PageImpl<>(eventList);
-        Pageable pageable = Pageable.unpaged();
+    public void testSave() {
+        Event eventNew = new Event(4L,"Evento 4","22-06-1995",10,"description","style",1);
 
-        when(eventRepository.findAll(pageable)).thenReturn(eventPage);
+        when(eventRepository.save(any(Event.class))).thenReturn(eventNew);
 
-        Page<Event> result = eventService.findAll(pageable);
+        Event result = eventService.save(eventNew);
 
-        assertThat(result.getTotalElements()).isEqualTo(3);
-        assertThat(result.getContent().get(0).getTitle()).isEqualTo("Evento 1");
-        assertThat(result.getContent().get(1).getTitle()).isEqualTo("Evento 2");
-        assertThat(result.getContent().get(2).getTitle()).isEqualTo("Evento 3");
+        assertThat(result.getId()).isEqualTo(4L);
+        assertThat(result.getTitle()).isEqualTo("Evento 4");
+        assertThat(result.getMax_participants()).isEqualTo(10);
+        assertThat(result.getDescription()).isEqualTo("description");
+        assertThat(result.getActual_participants()).isEqualTo(1);
     }
 
     @Test
-    public void testSave() {
-        Event event = new Event("Evento 4", "2023-04-01", 40, "Evento de prueba 4", 4,null);
+    public void testDeleteById() {
+        Long id = 1L;
+        doNothing().when(eventRepository).deleteById(id);
+        eventService.deleteById(id);
+        Optional<Event> eventDeleted = eventService.findById(id);
+        verify(eventRepository).deleteById(id);
+        assertThat(eventDeleted).isEmpty();
+    }
 
-        when(eventRepository.save(any(Event.class))).thenReturn(event);
+    @Test
+    public void findById_shouldReturnEvent_WhenEventExists(){
+        Long id = 1L;
+        when(eventRepository.findById(id)).thenReturn(Optional.of(event1));
+        Optional<Event> result = eventService.findById(id);
+        assertThat(result).isNotEmpty();
+        assertThat(result.get().getId()).isEqualTo(1L);
+        assertThat(result.get().getTitle()).isEqualTo("Evento 1");
+        assertThat(result.get().getMax_participants()).isEqualTo(10);
+    }
 
-        Event result = eventService.save(event);
-
-        assertThat(result.getId()).isEqualTo(0L);
-        assertThat(result.getTitle()).isEqualTo("Evento 4");
-        assertThat(result.getMax_participants()).isEqualTo(40);
-        assertThat(result.getDescription()).isEqualTo("Evento de prueba 4");
-        assertThat(result.getActual_participants()).isEqualTo(4);
+    @Test
+    public void updateEvent_shouldUpdateEvent(){
+        Long id = 1L;
+        Event eventUpdated = new Event(1L,"Evento 1","22-06-1995",10,"description","style",1);
+        when(eventRepository.findById(id)).thenReturn(Optional.of(event1));
+        when(eventRepository.save(event1)).thenReturn(eventUpdated);
+        Event result = eventService.updateEvent(id, eventUpdated);
+        assertThat(result.getId()).isEqualTo(1L);
+        assertThat(result.getTitle()).isEqualTo("Evento 1");
+        assertThat(result.getMax_participants()).isEqualTo(10);
+        assertThat(result.getDescription()).isEqualTo("description");
+        assertThat(result.getActual_participants()).isEqualTo(1);
     }
 
 }

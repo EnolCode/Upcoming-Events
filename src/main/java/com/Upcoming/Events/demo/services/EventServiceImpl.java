@@ -72,4 +72,15 @@ public class EventServiceImpl implements BaseService<Event> {
 
   }
 
+  @Transactional
+  public Event updateEvent(Long id, Event eventDetails) {
+    Event event = findById(id).orElseThrow(null);
+    event.setTitle(eventDetails.getTitle());
+    event.setActual_participants(eventDetails.getActual_participants());
+    event.setDate_hour(eventDetails.getDate_hour());
+    event.setDescription(eventDetails.getDescription());
+    event.setMax_participants(eventDetails.getMax_participants());
+    event.setStyle(eventDetails.getStyle());
+      return save(event);
+  }
 }
