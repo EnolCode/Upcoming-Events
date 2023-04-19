@@ -36,7 +36,7 @@ public class EventRepositoryTest {
     }
      
     @Test
-    public void saveFilm(){
+    public void saveEvent(){
         Event event = new Event();
         event.setTitle("Film3");
         event.setActual_participants(8);
@@ -45,14 +45,14 @@ public class EventRepositoryTest {
     }
 
     @Test
-    public void deleteFilm(){
+    public void deleteEvent(){
         Event event = repository.findById(1L).orElseThrow();
         repository.delete(event);
         assertThat(repository.findById(1L)).isEmpty();
     }
 
     @Test
-    public void updateFilm(){
+    public void updateEvent(){
         Event event = repository.findById(1L).orElseThrow();
         event.setTitle("Soy el concierto editado");
         repository.save(event);

@@ -57,7 +57,7 @@ public class EventController {
 
     // Actualizar usuario
     @Transactional
-    @PutMapping("/{id}")
+    @PutMapping("/updated/{id}")
     public ResponseEntity<?> update(@RequestBody Event eventDetails, @PathVariable Long id) {
         Optional<Event> event = eventService.findById(id);
         if (!event.isPresent()) {
@@ -83,7 +83,7 @@ public class EventController {
             return ResponseEntity.notFound().build();
         }
         eventService.deleteById(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok("Show deleted successfully");
 
     }
 }
