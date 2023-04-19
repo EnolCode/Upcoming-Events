@@ -62,16 +62,16 @@ public class UserController {
     return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user.get()));
   }
 
-  @Transactional
-  @PostMapping("/subscribe/{eventId}")
-  public ResponseEntity<String> addParticipantToEvent(@PathVariable Long eventId) {
-    try {
-      userService.registerUserToEvent(eventId);
-      return ResponseEntity.ok().body("User with id " + " added to event with id " + eventId);
-    } catch (RuntimeException e) {
-      return ResponseEntity.badRequest().body(e.getMessage());
-    }
-  }
+  // @Transactional
+  // @PostMapping("/subscribe/{eventId}")
+  // public ResponseEntity<String> addParticipantToEvent(@PathVariable Long eventId) {
+  //   try {
+  //     userService.registerUserToEvent(eventId);
+  //     return ResponseEntity.ok().body("User with id " + " added to event with id " + eventId);
+  //   } catch (RuntimeException e) {
+  //     return ResponseEntity.badRequest().body(e.getMessage());
+  //   }
+  // }
 
   @Transactional
   @DeleteMapping("/{id}")
